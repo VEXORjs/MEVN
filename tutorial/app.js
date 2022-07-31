@@ -1,4 +1,4 @@
-var createError = require('http-errors');
+var createHttpError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var app = express();
 
-//require file system module
+//require file system module to load
 var fs = require('file-system');
 
 //include controllers 
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  next(createHttpError(404));
 });
 
 // error handler
