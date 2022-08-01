@@ -2,9 +2,20 @@ var createHttpError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 var logger = require('morgan');
 
 var app = express();
+
+//connect to mongodb
+mongoose.connect('mongodb://localhost:27017/tutorial', function(){
+  console.log('Connection has been made');
+})
+.catch(err => {
+  console.error('App starting error: ', err.stack);
+  process.exit(1);
+})
 
 //require file system module to load
 var fs = require('file-system');
