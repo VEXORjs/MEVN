@@ -1,12 +1,12 @@
-var createHttpError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var logger = require('morgan');
+const createHttpError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const logger = require('morgan');
 
-var app = express();
+const app = express();
 
 //connect to mongodb
 mongoose.connect('mongodb://localhost:27017/tutorial', function(){
@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/tutorial', function(){
 })
 
 //require file system module to load
-var fs = require('file-system');
+const fs = require('file-system');
 
 //include controllers 
 fs.readdirSync('controllers').forEach(function(file){
@@ -55,8 +55,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+module.exports = app;
+
 app.listen(3000, function () {
   console.log('Listening on 3000')
 });
-
-module.exports = app;
